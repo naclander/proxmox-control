@@ -33,5 +33,11 @@ def update_all(noconfirm, cleanup, noconfirm_cleanup):
     ct.update_all(noconfirm, cleanup, noconfirm_cleanup)
 
 
+@container.command(help="Start an interactive shell on a container")
+@click.option("--container", required=True, help="container id or name")
+def connect(container):
+    ct.run_command(container, "bash")
+
+
 if __name__ == "__main__":
     proxmox_manage()
